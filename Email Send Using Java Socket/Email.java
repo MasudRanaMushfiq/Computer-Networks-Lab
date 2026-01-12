@@ -35,13 +35,17 @@ class Email{
     // Output stream to send commands to the server 
     dos = new DataOutputStream(s.getOutputStream());
 
+    // Gets raw bytes coming from the server, Converts bytes into characters, read line by line efficiently
+    // BufferedReader() reads one line of text from the input stream (until it finds a newline \n) and returns it as a String.
+
     // Input stream to read responses from the server
     br = new BufferedReader(new InputStreamReader(s.getInputStream()));
 
-    // Read and print the initial SMTP server greeting
+    // Reads a single line from the server using BufferedReader.readLine(), returns it as a String, and prints it with the prefix "SERVER: ".
+    // Read and print the First SMTP server greeting
     System.out.println("SERVER: " + br.readLine());
 
-    // Send EHLO command to identify the client to the server
+    // "EHLO smtp.gmail.com\r\n" sends the EHLO command to setup communication as client and here \r\n marks the end of the line.
     send("EHLO smtp.gmail.com\r\n");
 
     // Read multi-line server response for EHLO
@@ -96,7 +100,7 @@ class Email{
     System.out.println("SERVER: " + br.readLine());
 
     // Close SMTP session
-    send("QUIT\r\n");
+    send("QUIT\r\n"); 
     System.out.println("SERVER: " + br.readLine());
   }
 
