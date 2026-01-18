@@ -18,7 +18,7 @@ class Email{
     String user = "s2211176104@ru.ac.bd";
 
     // Store Gmail app password (used for SMTP authentication) in variable
-    String pass = "dbde bupl yhgn nops";
+    String pass = "ecef cvqm ziho opqt";
 
     // The given string is converted to bytes, then encoded into Base64 ASCII characters because SMTP is text-based so rather than binary data ASCII cherecter is safe.
     String username = new String(Base64.getEncoder().encode(user.getBytes()));
