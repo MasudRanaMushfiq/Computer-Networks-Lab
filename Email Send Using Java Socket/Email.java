@@ -6,11 +6,11 @@
  *                credentials, and sends an email using standard
  *                SMTP commands.
  *
- * SMTP Server  : smtp.gmail.com
- * Port Number  : 465
- * Protocol     : SMTP over SSL
+ * SMTP Server  : smtp.gmail.com 
+ * Port Number  : 465 
+ * Protocol     : SMTP over SSL 
  *
- * Author       : Masud Rana Mushfiq
+ * Author       : Masud Rana Mushfiq 
  */ 
 
 import java.io.*; // Import classes for input/output streams
