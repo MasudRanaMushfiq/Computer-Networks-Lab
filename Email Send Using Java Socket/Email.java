@@ -1,3 +1,5 @@
+
+
 import java.io.*; // Import classes for input/output streams
 import javax.net.ssl.*; // Import SSL socket classes for secure communication
 import java.util.*; // Import utility classes fro Base64 encoder
@@ -8,8 +10,8 @@ class Email{
   private static DataOutputStream dos;   // Used to send data to the SMTP server
   public static BufferedReader br;   // Used to read responses from the SMTP server
 
-
   // Main method: program execution starts here
+
   // "throws Exception" means checked exceptions are not handled here;
   // they are passed to the JVM, which stops the program if an error occurs.
   public static void main(String argv[]) throws Exception {
@@ -17,10 +19,11 @@ class Email{
     // Store Sender email address in variable 
     String user = "s2211176104@ru.ac.bd";
 
-    // Store Gmail app password (used for SMTP authentication) in variable
+    // Store Gmail App Password (used for SMTP authentication) in variable
     String pass = "dbde bupl yhgn nops";
 
-    // The given string is converted to bytes, then encoded into Base64 ASCII characters because SMTP is text-based so rather than binary data ASCII cherecter is safe.
+    // The given string is converted to bytes, then encoded into Base64 ASCII characters 
+    // because SMTP is text-based so rather than binary data ASCII cherecter is safe.
     String username = new String(Base64.getEncoder().encode(user.getBytes()));
 
     // Encode password in Base64
@@ -50,13 +53,15 @@ class Email{
 
     // Read multi-line server response for EHLO
     String line;
-    while ((line = br.readLine()) != null) {
+    // assign server response string to line and check if it is String or NULL 
+    while ((line = br.readLine()) != null) { 
       System.out.println("SERVER: " + line);
-      if (line.startsWith("250 "))
-        break; // Last line of EHLO response
+      if (line.startsWith("250 ")) // "250" is the final response line for EHLO which means END 
+        break; 
     }
 
     // Start SMTP authentication process
+    // SMTP commands must end with \r\n becauseserver only detects the end command when receives CRLF
     send("AUTH LOGIN\r\n");
     System.out.println("SERVER: " + br.readLine());
 
@@ -77,6 +82,7 @@ class Email{
     System.out.println("SERVER: " + br.readLine());
 
     // Tell server that email content will follow
+    // After this command, the server switches into message input mode 
     send("DATA\r\n");
     System.out.println("SERVER: " + br.readLine());
 
@@ -95,7 +101,7 @@ class Email{
     // Email body content
     send("THIS IS A TEST EMAIL. THANK YOU\r\n");
 
-    // Single dot indicates end of email data
+    // Single dot indicates end of email data to SMTP server as command 
     send(".\r\n");
     System.out.println("SERVER: " + br.readLine());
 
@@ -104,16 +110,19 @@ class Email{
     System.out.println("SERVER: " + br.readLine());
   }
 
+
   // Method to send data to SMTP server
   private static void send(String s) throws Exception {
 
     // Write command to the server
     dos.writeBytes(s);
 
-    // Delay to allow server to process the command
+    // Delay to allow server to process the command(Optional)
     Thread.sleep(1000);
 
     // Print what the client sends
     System.out.println("CLIENT: " + s);
   }
 }
+
+
