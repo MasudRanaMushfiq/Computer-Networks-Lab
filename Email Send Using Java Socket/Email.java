@@ -1,4 +1,17 @@
-
+/*
+ * Program Name : Secure Email Sending using SMTP over SSL
+ * Description  : This program sends an email using the SMTP protocol
+ *                over a secure SSL connection. It connects to Gmail's
+ *                SMTP server, authenticates using Base64-encoded
+ *                credentials, and sends an email using standard
+ *                SMTP commands.
+ *
+ * SMTP Server  : smtp.gmail.com
+ * Port Number  : 465
+ * Protocol     : SMTP over SSL
+ *
+ * Author       : Masud Rana Mushfiq
+ */ 
 
 import java.io.*; // Import classes for input/output streams
 import javax.net.ssl.*; // Import SSL socket classes for secure communication
