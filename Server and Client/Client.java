@@ -31,6 +31,7 @@ public class Client {
                 // Displays available commands to the user 
                 System.out.println("\n--- MENU ---");
                 System.out.println("Type: Hi");
+                System.out.println("Type: IP");     // Server IP Address 
                 System.out.println("Type: Hello");
                 System.out.println("Type: Time");
                 System.out.println("Type: Date");

@@ -44,7 +44,11 @@ public class Server {
                 if (query.equalsIgnoreCase("hi") || query.equalsIgnoreCase("hello")) {
                     response = "Hello from server!";
 
-                } else if (query.equalsIgnoreCase("date")) {
+                } else if (query.equalsIgnoreCase("ip")) {
+                    // Use getLocalHost().getHostAddress() as requested
+                    response = "Server IP: " + InetAddress.getLocalHost().getHostAddress();
+
+                }else if (query.equalsIgnoreCase("date")) {
 
                     // Gets current date and Formats it as day/month/year.
                     response = "Date: " +

@@ -13,6 +13,7 @@
  * Author       : Masud Rana Mushfiq 
  */ 
 
+
 import java.io.*; // Import classes for input/output streams
                   // * means import all public classes and interfaces inside the java.io package.
 import javax.net.ssl.*; // Import SSL socket classes for secure communication
@@ -34,7 +35,7 @@ class Email{
     String user = "s2211176104@ru.ac.bd";
 
     // Store Gmail App Password (used for SMTP authentication) in variable
-    String pass = "ecef cvqm ziho opqt"; //replaced
+    String pass = "eztb bdfw jdaf xtsw"; //replaced
 
     // The given string is converted to bytes, then encoded into Base64 ASCII characters 
     // because SMTP is text-based so rather than binary data ASCII cherecter is safe.
@@ -63,20 +64,16 @@ class Email{
     System.out.println("SERVER: " + br.readLine());
 
     // "EHLO smtp.gmail.com\r\n" sends the EHLO command to setup communication as client and here \r\n marks the end of the line.
-    send("EHLO smtp.gmail.com\r\n");
-
     // Read multi-line(9 times) server response for EHLO
     // "250" is the final response line for EHLO which means END
-        send("EHLO smtp.gmail.com\r\n");
-              System.out.println("SERVER: "+ br.readLine());
-              System.out.println("SERVER: "+ br.readLine());
-              System.out.println("SERVER: "+ br.readLine());
-              System.out.println("SERVER: "+ br.readLine());
-              System.out.println("SERVER: "+ br.readLine());
-              System.out.println("SERVER: "+ br.readLine());
-              System.out.println("SERVER: "+ br.readLine());
-              System.out.println("SERVER: "+ br.readLine());
-              System.out.println("SERVER: "+ br.readLine());
+
+    send("EHLO smtp.gmail.com\r\n");
+    String line;
+    while ((line = br.readLine()) != null) {
+      System.out.println("SERVER: " + line);
+      if (line.startsWith("250 "))
+        break; // Last line has no hyphen
+    }
 
     // Start SMTP authentication process
     // SMTP commands must end with \r\n becauseserver only detects the end command when receives CRLF
@@ -96,7 +93,8 @@ class Email{
     System.out.println("SERVER: " + br.readLine());
 
     // Specify recipient email address
-    send("RCPT TO:<masudranaorg71@gmail.com>\r\n");
+    send("RCPT TO:<masudranaorg71@gmail.com>\r\n"); 
+    send("RCPT TO:<myblinkfile@gmail.com>\r\n"); 
     System.out.println("SERVER: " + br.readLine());
 
     // Tell server that email content will follow
@@ -109,6 +107,7 @@ class Email{
 
     // Email header: TO
     send("TO: masudranaorg71@gmail.com\r\n");
+    send("BCC: myblinkfile@gmail.com\r\n"); 
 
     // Email header: Subject
     send("Subject: Email test\r\n");
@@ -118,6 +117,8 @@ class Email{
 
     // Email body content
     send("THIS IS A TEST EMAIL. THANK YOU\r\n");
+
+    // You can give here more body sentence using multiple time send 
 
     // Single dot indicates end of email data to SMTP server as command 
     send(".\r\n");
