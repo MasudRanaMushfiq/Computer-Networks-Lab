@@ -32,10 +32,10 @@ class Email{
   public static void main(String argv[]) throws Exception {
 
     // Store Sender email address in variable 
-    String user = "s2211176104@ru.ac.bd";
+    String user = "xx1234@gmail.com";
 
     // Store Gmail App Password (used for SMTP authentication) in variable
-    String pass = "eztb bdfw jdaf xtsw"; //replaced
+    String pass = "xxxx xxxx xxxx xxxx"; //replaced
 
     // The given string is converted to bytes, then encoded into Base64 ASCII characters 
     // because SMTP is text-based so rather than binary data ASCII cherecter is safe.
@@ -89,12 +89,12 @@ class Email{
     System.out.println("SERVER: " + br.readLine());
 
     // Specify sender email address
-    send("MAIL FROM:<s2211176104@ru.ac.bd>\r\n");
+    send("MAIL FROM:<xx1234@gmail.com>\r\n");
     System.out.println("SERVER: " + br.readLine());
 
     // Specify recipient email address
-    send("RCPT TO:<masudranaorg71@gmail.com>\r\n"); 
-    send("RCPT TO:<myblinkfile@gmail.com>\r\n"); 
+    send("RCPT TO:<xx1234@gmail.com>\r\n"); 
+    send("RCPT TO:<xx1234@gmail.com>\r\n"); 
     System.out.println("SERVER: " + br.readLine());
 
     // Tell server that email content will follow
@@ -103,11 +103,11 @@ class Email{
     System.out.println("SERVER: " + br.readLine());
 
     // Email header: FROM
-    send("FROM: s2211176104@ru.ac.bd\r\n");
+    send("FROM: xx1234@gmail.com\r\n");
 
     // Email header: TO
-    send("TO: masudranaorg71@gmail.com\r\n");
-    send("BCC: myblinkfile@gmail.com\r\n"); 
+    send("TO: xx1234@gmail.com\r\n");
+    send("BCC: xx1234@gmail.com\r\n"); 
 
     // Email header: Subject
     send("Subject: Email test\r\n");
